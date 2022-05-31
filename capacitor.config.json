@@ -1,0 +1,7 @@
+{
+  "appId": "com.example.app",
+  "appName": "loja-react-demo",
+  "npmClient": "npm",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
