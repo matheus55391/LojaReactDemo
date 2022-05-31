@@ -7,10 +7,12 @@ import HomeIcon from '@mui/icons-material/Home'
 import ViewListIcon from '@mui/icons-material/ViewList'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import { useNavigate } from 'react-router-dom'
 
 
 export const App = () => {
 	const [value, setValue] = useState(0)
+	const navigate = useNavigate()
 	return (
 		<ThemeProvider theme={LightTheme}>
 			<Box
@@ -21,7 +23,6 @@ export const App = () => {
 			>
 				<Box
 					height={'100%'}
-					bgcolor={'red'}
 					overflowY={'auto'}
 				>
 					<AppRoutes/>				
@@ -38,10 +39,10 @@ export const App = () => {
 						onChange={(event, newValue)=>setValue(newValue)}
 						
 					>
-						<BottomNavigationAction label="Home" icon={<HomeIcon />} />
-						<BottomNavigationAction label="Categorias" icon={<ViewListIcon />} />
-						<BottomNavigationAction label="Carrinho" icon={<ShoppingCartIcon />} />
-						<BottomNavigationAction label="Minha Conta" icon={<AccountCircleIcon />} />
+						<BottomNavigationAction onClick={()=>navigate('/')} label="Home" icon={<HomeIcon />} />
+						<BottomNavigationAction onClick={()=>navigate('/categorias')} label="Categorias" icon={<ViewListIcon />} />
+						<BottomNavigationAction onClick={()=>navigate('/carrinho')} label="Carrinho" icon={<ShoppingCartIcon />} />
+						<BottomNavigationAction onClick={()=>navigate('/minha-conta')} label="Minha Conta" icon={<AccountCircleIcon />} />
 					</BottomNavigation>	
 				</Box>
 	

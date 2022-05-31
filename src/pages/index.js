@@ -1,2 +1,5 @@
 export * from './home'
-export * from './Profile'
+export * from './account'
+export * from './cart'
+export * from './categories'
+export * from './notfound'
