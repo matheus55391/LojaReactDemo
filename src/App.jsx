@@ -1,53 +1,61 @@
-import { BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, } from '@mui/material'
+import { AppBar, BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, } from '@mui/material'
 import { LightTheme } from './themes'
 import { useState } from 'react'
 import { AppRoutes } from './Routes'
+import { useNavigate } from 'react-router-dom'
+import { CartProvider } from './shared/contexts'
 
 import HomeIcon from '@mui/icons-material/Home'
 import ViewListIcon from '@mui/icons-material/ViewList'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import { useNavigate } from 'react-router-dom'
-
 
 export const App = () => {
 	const [value, setValue] = useState(0)
 	const navigate = useNavigate()
 	return (
-		<ThemeProvider theme={LightTheme}>
-			<Box
-				display={'flex'}
-				flexDirection={'column'}
-				height={'100vh'}
-				margin={0}				
-			>
+		<CartProvider>
+
+
+			<ThemeProvider theme={LightTheme}>
+
+
 				<Box
-					height={'100%'}
-					overflowY={'auto'}
+					display={'flex'}
+					flexDirection={'column'}
+					height={'100vh'}
+					margin={0}				
 				>
-					<AppRoutes/>				
-				</Box>
-				<Box
-					mt={'auto'}
-					display={{xs:'flex', md:'none'}}
-					flexDirection={'column'}		
-					
-				>
-					<BottomNavigation
-						showLabels
-						value={value}
-						onChange={(event, newValue)=>setValue(newValue)}
-						
+					<Box
+						height={'100%'}
+						overflowY={'auto'}
 					>
-						<BottomNavigationAction onClick={()=>navigate('/')} label="Home" icon={<HomeIcon />} />
-						<BottomNavigationAction onClick={()=>navigate('/categorias')} label="Categorias" icon={<ViewListIcon />} />
-						<BottomNavigationAction onClick={()=>navigate('/carrinho')} label="Carrinho" icon={<ShoppingCartIcon />} />
-						<BottomNavigationAction onClick={()=>navigate('/minha-conta')} label="Minha Conta" icon={<AccountCircleIcon />} />
-					</BottomNavigation>	
-				</Box>
+						<AppRoutes/>				
+					</Box>
+					<AppBar
+						position="fixed"
+						display={{xs:'flex', md:'none'}}
+						flexDirection={'column'}		
+						style={{top: 'auto', bottom: 0}}
+					>
+						
+						<BottomNavigation
+							showLabels
+							value={value}
+							onChange={(event, newValue)=>setValue(newValue)}
+
+						>
+							<BottomNavigationAction onClick={()=>navigate('/')} label="Home" icon={<HomeIcon />}							/>
+							<BottomNavigationAction onClick={()=>navigate('/categorias')} label="Categorias" icon={<ViewListIcon />} 		/>
+							<BottomNavigationAction onClick={()=>navigate('/carrinho')} label="Carrinho" icon={<ShoppingCartIcon />} 		/>
+							<BottomNavigationAction onClick={()=>navigate('/minha-conta')} label="Minha Conta" icon={<AccountCircleIcon />} />
+						</BottomNavigation>	
+					</AppBar>
 	
-			</Box>
-			<CssBaseline/>
-		</ThemeProvider>
+				</Box>
+				<CssBaseline/>
+
+			</ThemeProvider>
+		</CartProvider>
 	)
 }
