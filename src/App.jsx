@@ -32,11 +32,14 @@ export const App = () => {
 					>
 						<AppRoutes/>				
 					</Box>
-					<AppBar
+					<AppBar			
+						sx={{
+							display: {xs:'flex', md:'none'},
+							top: 'auto', 
+							bottom: 0
+						}}
 						position="fixed"
-						display={{xs:'flex', md:'none'}}
-						flexDirection={'column'}		
-						style={{top: 'auto', bottom: 0}}
+						flexDirection={'column'}
 					>
 						
 						<BottomNavigation

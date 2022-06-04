@@ -20,6 +20,9 @@ export const Home = () =>{
 				<Grid item xs={xs} md={md}>
 					<CardProduct/>
 				</Grid>
+				<Grid item xs={xs} md={md}>
+					<CardProduct/>
+				</Grid>
 
 
 			</Grid>
