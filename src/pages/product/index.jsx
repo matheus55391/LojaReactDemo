@@ -1,11 +1,16 @@
 import { Box, Button, Typography, useTheme } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useCart } from '../../shared/hooks/useCart'
 import api from '../../shared/services/api'
+
 import ShoppingCartIcon  from '@mui/icons-material/ShoppingCart'
+
 export const Product = () =>{
 	let { id } = useParams()
 	const [product, setProduct] = useState({})
+	const theme = useTheme()
+	const { addProduct } = useCart()
 
 	useEffect(()=>{
 		
@@ -19,7 +24,8 @@ export const Product = () =>{
 			})
 
 	},[])
-	const theme = useTheme()
+
+
 	return (
 
 		<Box  
@@ -125,7 +131,8 @@ export const Product = () =>{
 					</Box>
 					<Box sx={{display: 'flex', flexDirection: {xs: 'column', md:'row'}, alignItems: {xs: 'left', md:'center'}}}  >
 						<Button sx={{maxWidth: {md:'200px'}, margin:{md:'10px'}, marginLeft: {md:'0px'}, marginBottom: {xs:'15px'}, height:'50px'}}  variant="contained" fullWidth>COMPRAR</Button>
-						<Button startIcon={<ShoppingCartIcon/>} sx={{maxWidth: {md:'250px'}, margin:{md:'10px'},  height:'50px'}}  variant="contained" fullWidth>ADICIONAR AO CARRINHO</Button>
+						<Button startIcon={<ShoppingCartIcon/>} sx={{maxWidth: {md:'250px'}, margin:{md:'10px'},  height:'50px'}}  variant="contained" fullWidth onClick={()=>{addProduct(id)}}
+						>ADICIONAR AO CARRINHO</Button>
 					</Box>
 
 				</Box>

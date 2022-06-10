@@ -16,8 +16,8 @@ export const BottomBar = () => {
 				top: 'auto', 
 				bottom: 0,
 				flexDirection: 'column',
+				position: 'fixed'
 			}}
-			position="fixed"
 		>
 
 			<BottomNavigation
