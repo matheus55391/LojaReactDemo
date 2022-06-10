@@ -8,6 +8,7 @@ export const CartProvider = ({ children }) => {
 	const [products, setProducts] = useState([])
     
 	const addProduct = () =>{
+
 	}
 
 	const removeProduct = () =>{}

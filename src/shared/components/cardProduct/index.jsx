@@ -1,9 +1,21 @@
 import { Button, CardActions, CardContent, Box } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { CardProduto, NameProduct, PriceProduct } from './style'
 
-export const CardProduct = () =>{
+export const CardProduct = (props) =>{
+	const navigate = useNavigate()
+	const NavToProductPage = () =>{
+		console.log(props.id)
+		navigate('/produto/' + props.id)
+	}
+	
 	return (
-		<CardProduto>
+		<CardProduto
+			sx={{
+				maxWidth: { xs: '100%', md: '300px'},
+				margin: { xs: '10px'}
+			}}
+		>
 
 			<Box
 				sx={{
@@ -17,16 +29,16 @@ export const CardProduct = () =>{
 			>
 				<Box
 					component="img"				
-					src="https://images.kabum.com.br/produtos/fotos/183080/headset-gamer-razer-blackshark-v2-x-surround-7-1-drivers-50mm-p3-verde-rz04-03240600-r3u1_1634388949_m.jpg"
+					src={props.img}
 					sx={{ height: '170px'}}
 				/>
 			</Box>
 			<CardContent sx={{padding: '0px 16px 0px 16px'}}>
-				<NameProduct >
-					Headset Gamer Razer BlackShark V2 X,  Som Surround 7.1, P2, Drivers 50mm - RZ04-03240100-R3U1
+				<NameProduct onClick={NavToProductPage} >
+					{props.name}
 				</NameProduct>
 				<PriceProduct>
-					R$ 289,90
+					R$ {props.value}
 				</PriceProduct>
 			</CardContent>
 			<CardActions sx={{marginTop: 'auto'}}>
